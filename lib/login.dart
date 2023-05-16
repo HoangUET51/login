@@ -93,25 +93,40 @@ class Login extends StatelessWidget {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Email or Phone Number',
-                              hintStyle: TextStyle(color: Colors.grey),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey.withOpacity(0.5)),
                               contentPadding: EdgeInsets.all(20))),
                       TextField(
                           style: TextStyle(fontSize: 20),
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Password',
-                              hintStyle: TextStyle(color: Colors.grey),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey.withOpacity(0.5)),
                               contentPadding: EdgeInsets.all(20))),
                     ],
                   ),
                 ),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Login"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: <Color>[
+                            Colors.deepPurpleAccent.withOpacity(0.7),
+                            Colors.deepPurpleAccent.withOpacity(0.5)
+                          ])),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text("Login", style: TextStyle(color: Colors.white)),
+                  ),
                 ),
-              )
+              ),
             ],
           )),
         ],
