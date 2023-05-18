@@ -1,4 +1,4 @@
-import 'package:first_app/login.dart';
+import 'package:first_app/listView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,21 +7,23 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Login(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const Messages());
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
@@ -50,26 +52,32 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'Hello: hoang.vuvan',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700,color: Colors.lime,backgroundColor: Colors.blueGrey),
+              style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.lime,
+                  backgroundColor: Colors.blueGrey),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const Text.rich(
+            const Text.rich(TextSpan(text: "Hello", children: <TextSpan>[
               TextSpan(
-                text: "Hello",
-                children: <TextSpan>[
-                  TextSpan(text: ' Thea!',style: TextStyle(fontWeight: FontWeight.w700)),
-                  TextSpan(text: ' My name Hoang TB 113')
-                ]
-              )
-            ),
+                  text: ' Thea!',
+                  style: TextStyle(fontWeight: FontWeight.w700)),
+              TextSpan(text: ' My name Hoang TB 113')
+            ])),
             ElevatedButton(onPressed: () {}, child: Text("Hello")),
-            ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.ac_unit), label: Text("Button Click Here")),
-            TextButton(onPressed: (){
-              print("hello click");
-            }, child: Text('Click me'))
+            ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.ac_unit),
+                label: Text("Button Click Here")),
+            TextButton(
+                onPressed: () {
+                  print("hello click");
+                },
+                child: Text('Click me'))
             // ElevatedButton.icon(onPressed: (){}, icon: "", label: Text("Hello"))
           ],
         ),
