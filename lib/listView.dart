@@ -7,11 +7,23 @@ class Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(68),
+          preferredSize: Size.fromRadius(20),
           child: AppBar(
-            leading: Icon(Icons.account_circle_rounded),
-            leadingWidth: 16,
+            leading: Padding(
+              padding: const EdgeInsets.only(
+                left: 16,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: Image.asset(
+                  'assets/images/avatar.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            leadingWidth: 56,
             title: Text(
               "Chats",
               style: TextStyle(
@@ -54,17 +66,21 @@ class Messages extends StatelessWidget {
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 8),
+                const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
             child: TextField(
                 style: TextStyle(
                     fontSize: 17, color: Colors.grey.withOpacity(0.5)),
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey.withOpacity(0.1),
                     prefixIcon: Icon(
                       Icons.search,
                       color: Colors.grey.withOpacity(0.5),
                     ),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide:
+                            BorderSide(width: 0, style: BorderStyle.none)),
                     hintText: 'Search',
                     hintStyle: TextStyle(
                         color: Colors.grey.withOpacity(0.5), fontSize: 17),
@@ -153,7 +169,7 @@ class Messages extends StatelessWidget {
                       height: 50,
                     ),
                     title: Text(
-                      "Hello",
+                      "Martin Randolph",
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
@@ -183,7 +199,7 @@ class Messages extends StatelessWidget {
           Container(
             color: Colors.grey.withOpacity(0.3),
             width: double.infinity,
-            height: 68,
+            height: 85,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
