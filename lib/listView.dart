@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:first_app/common/AppColors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +8,68 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> infos = [
+      {
+        "name": "Joshua",
+        "avatar": "assets/images/avatar.png",
+      },
+      {
+        "name": "Joshua",
+        "avatar": "assets/images/avatar.png",
+      },
+      {
+        "name": "Martin",
+        "avatar": "assets/images/avatar1.jpg",
+      },
+      {
+        "name": "Karen",
+        "avatar": "assets/images/avatar2.jpg",
+      },
+      {
+        "name": "Martha",
+        "avatar": "assets/images/avatar3.jpg",
+      },
+    ];
+
+    List<Map<String, dynamic>> messages = [
+      {
+        "name": "Martin Randolph",
+        "avatar": "assets/images/avatar1.jpg",
+        "subTitle": "You: What’s man! · 9:40 AM",
+        "seen": Icons.circle_outlined,
+      },
+      {
+        "name": "Andrew Parker",
+        "avatar": "assets/images/avatar5.jpg",
+        "subTitle": "You: Ok, thanks! · 9:25 AM",
+        "seen": Icons.check_circle_outline,
+      },
+      {
+        "name": "Karen Castillo",
+        "avatar": "assets/images/avatar2.jpg",
+        "subTitle": "You: Ok, See you in To… · Fri",
+        "seen": Icons.check_circle_outline,
+      },
+      {
+        "name": "Maisy Humphrey",
+        "avatar": "assets/images/avatar3.jpg",
+        "subTitle": "Have a good day, Maisy! · Fri",
+        "seen": Icons.check_circle_outline,
+      },
+      {
+        "name": "Joshua Lawrence",
+        "avatar": "assets/images/avatar.png",
+        "subTitle": "The business plan loo…  · Thu",
+        "seen": Icons.circle_outlined,
+      },
+      {
+        "name": "Tabitha Potter",
+        "avatar": "assets/images/avatar4.png",
+        "subTitle": "The business plan loo…  · Thu",
+        "seen": Icons.circle_outlined,
+      },
+    ];
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
@@ -98,8 +162,8 @@ class Messages extends StatelessWidget {
                   width: 30,
                 );
               },
-              itemCount: 5,
-              itemBuilder: (context, int index) {
+              itemCount: infos.length,
+              itemBuilder: (context, index) {
                 if (index == 0) {
                   return Column(
                     children: [
@@ -129,7 +193,8 @@ class Messages extends StatelessWidget {
                           child: Container(
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(28),
-                                child: Image.asset("assets/images/avatar.png")),
+                                child: Image.asset(
+                                    infos[index]["avatar"].toString())),
                             width: 52,
                             height: 52,
                           ),
@@ -143,7 +208,7 @@ class Messages extends StatelessWidget {
                       ]),
                       SizedBox(height: 7),
                       Text(
-                        "Martin",
+                        infos[index]["name"].toString(),
                         style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
@@ -164,26 +229,27 @@ class Messages extends StatelessWidget {
                     leading: Container(
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(25),
-                          child: Image.asset("assets/images/avatar.png")),
+                          child: Image.asset(
+                              messages[index]['avatar'].toString())),
                       width: 50,
                       height: 50,
                     ),
                     title: Text(
-                      "Martin Randolph",
+                      messages[index]["name"].toString(),
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 17,
                           color: AppColor.titleColor),
                     ),
                     subtitle: Text(
-                      "You: What’s man! · 9:40 AM",
+                      messages[index]["subTitle"].toString(),
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColor.subTitleColor),
                     ),
                     trailing: Icon(
-                      Icons.circle_outlined,
+                      messages[index]["seen"],
                       color: AppColor.subTitleColor,
                       size: 16,
                     ),
